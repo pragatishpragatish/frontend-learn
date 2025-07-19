@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Day 8 - Animations</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      background: #f8f8f8;
+    }
+
+    h2 {
+      margin-top: 2rem;
+    }
+
+    /* Task 1: Card with hover scale */
+    .card {
+      width: 200px;
+      height: 150px;
+      background: lightblue;
+      border-radius: 10px;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    .card:hover {
+      /* 🔧 TODO: Add transform and color change here */
+      transform: scale(1.05);
+      background-color: lightcoral;
+    }
+
+    /* Task 2: Fancy button */
+    .fancy-btn {
+      padding: 1rem 2rem;
+      background-color: coral;
+      border: none;
+      font-size: 1.1rem;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .fancy-btn:hover {
+      /* 🔧 TODO: Add scale and color change here */
+      transform: scale(1.05);
+      background-color: lightblue;
+    }
+
+    /* Task 3: Slide-in box */
+    @keyframes slideIn {
+      /* 🔧 TODO: Define slide-in from left animation */
+      from {
+        transform: translateX(-100%);
+      }
+      to {
+        transform: translateX(0);
+      }
+
+    }
+
+    .slide-box {
+      width: 300px;
+      height: 100px;
+      background: lightgreen;
+      margin-top: 2rem;
+      animation: slideIn 1s ease forwards;
+    }
+
+    /* Task 4: Fading text */
+    @keyframes fadeIn {
+      /* 🔧 TODO: Create fade in animation using opacity */
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    .fade-text {
+      font-size: 1.5rem;
+      color: navy;
+      margin-top: 2rem;
+      animation: fadeIn 2s ease-in-out forwards;
+    }
+
+    /* Task 5: Bouncing image (infinite) */
+    @keyframes bounce {
+        0%, 100%   { transform: translateY(0); }
+        50%        { transform: translateY(-20px); }
+    }
+
+    .bouncy-img {
+      width: 150px;
+      animation: bounce 0.5s infinite;
+      margin-top: 2rem;
+    }
+
+  </style>
+</head>
+<body>
+
+  <h2>Task 1: Hover Scale Card</h2>
+  <div class="card">Hover Me</div>
+
+  <h2>Task 2: Animated Button</h2>
+  <button class="fancy-btn">Click Me</button>
+
+  <h2>Task 3: Slide-in Box</h2>
+  <div class="slide-box"></div>
+
+  <h2>Task 4: Fade-in Text</h2>
+  <div class="fade-text">Hello, I'm fading in!</div>
+
+  <h2>Task 5: Bouncy Image</h2>
+  <img class="bouncy-img" src="https://images.hitpaw.com/topics/photo-enhancer-tips/cute-baby-elephant-2.webp" alt="Elephant"/>
+
+</body>
+</html>

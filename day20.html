@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <p>Para 1</p>
+        <p>Para 2</p>
+    </div>
+    <div>
+        <h2 id="heading">Heading</h2>
+        <p>Paragraph</p>
+    </div>
+
+    <script>
+        const container = document.querySelector(".container")
+        console.log(container.children)
+        console.log(container.firstElementChild)
+        console.log(container.lastElementChild)
+
+        let heading = document.getElementById("heading");
+        console.log(heading.nextElementSibling); // The <p> element
+
+    </script>
+</body>
+</html>

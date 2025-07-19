@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Task 1</h2>
+    <p id="task1">Pragatish 21 Chennai</p>
+    <button id="task1btn">Change Info</button>
+
+    <h2>Task 2</h2>
+    <ul id="t2list"></ul>
+
+    <h2>Task 3</h2>
+    <div id="t3div"></div>
+
+    <h2>Task 4</h2>
+    <select name="Traffic Signal" id="t4signal">
+        <option value="red">Red</option>
+        <option value="yellow">Yellow</option>
+        <option value="green">Green</option>        
+    </select>
+    <p id="t4msg"></p>
+
+    <h2>Task 5</h2>
+    <ul id="t5"></ul>
+    <select name="country" id="t5country">
+        <option value="India">India</option>
+        <option value="USA">USA</option>
+        <option value="China">China</option>
+        <option value="Sweden">Sweden</option>
+    </select>
+
+    <h2>Task 6</h2>
+    <ul id="t6"></ul>
+
+    <h2>Task 7</h2>
+    <div id="t7"></div>
+
+    <h2>Task 8</h2>
+    <p id="t8msg">You've clicked 0 times!</p>
+    <button id="t8btn">Click Me</button>
+
+    <h2>Task 9</h2>
+    <p>What's 2 + 2?</p>
+    <div style="display: flex;">
+        <button class="t9btn">3</button>
+        <button class="t9btn">4</button>
+        <button class="t9btn">5</button>
+    </div>
+    <p id="t9ans"></p>
+    <script>
+        /* Task 1 */
+        let t1cont = document.getElementById("task1");
+        let t1btn = document.getElementById("task1btn");
+
+        t1btn.addEventListener("click", function(){
+            t1cont.textContent = "John 30 USA";
+        })
+        /* Task 2 */
+        let fruits = ['Apple', 'Banana', 'Mango', 'Orange', 'Grapes', 'Watermelon'];
+        let fruitlist = document.getElementById("t2list");
+        for(let i = 0; i<fruits.length; i++){
+            fruitlist.innerHTML += `<li>${fruits[i]}</li>`;
+        }
+        /* Task 3 */
+        function greet(user){
+            let t3div = document.getElementById("t3div");
+            if(user.role === "admin"){
+                t3div.innerHTML = `Hello Admin ${user.username}`;
+            }else if(user.role === "viewer"){
+                t3div.innerHTML = `Hello Viewer ${user.username}`;
+            }else{
+                t3div.innerHTML = `Hello ${user.username}`;
+            }
+        }
+        let user = {username: "Pragatish", role: "admin"};
+        greet(user)
+
+        /* Task 4 */
+        let t4select = document.getElementById("t4signal");
+        let t4msg = document.getElementById("t4msg");
+        t4select.addEventListener("change", function(){
+            let color = t4select.value;
+            switch(color){
+                case "red":
+                    t4msg.textContent = "Stop";
+                    break;
+                case "yellow":
+                    t4msg.textContent = "Slow Down";
+                    break;
+                case "green":
+                    t4msg.textContent = "Go";
+                    break;
+                default:
+                    t4msg.textContent = "";
+            }
+        });
+
+        /* Task 5 */
+        let users = [
+            { username: "pragatish", role: "admin", country: "India", age: 21 },
+            { username: "john", role: "viewer", country: "USA", age: 25 },
+            { username: "mira", role: "editor", country: "India", age: 23 },
+            { username: "li", role: "admin", country: "China", age: 30 },
+            { username: "alexa", role: "viewer", country: "India", age: 20 },
+            { username: "sven", role: "editor", country: "Sweden", age: 27 }
+        ];
+        let countrySelect = document.getElementById("t5country");
+        countrySelect.addEventListener("change", function(){
+            let country = countrySelect.value;
+            function countryFilter(userArray, country){
+                let t5 = document.getElementById("t5");
+                t5.innerHTML = ""; 
+                for(let user of userArray){
+                    if (user.country === country){
+                        t5.innerHTML += `<li>${user.username}</li>`;
+                    }
+                }
+            }
+            countryFilter(users, country);
+        });
+
+        /* Task 6 */
+        let t6msg = document.getElementById("t6");
+        function roleCount(userArray){
+            let roleCount = {}
+            for(let user of userArray){
+                roleCount[user.role] = (roleCount[user.role] || 0) + 1;
+            }
+            return roleCount;
+        }
+        let roles = roleCount(users);
+        t6msg.innerHTML = "";
+        for(let role in roles){
+            t6msg.innerHTML += `<li>${role}: ${roles[role]}</li>`
+        }
+
+        /* Task 7 */
+        function avgAge(userArray){
+            let total = 0;
+            for(let user of userArray){
+                total += user.age;
+            }
+            let average = total/users.length;
+            return Math.round(average * 10) / 10
+        }
+        let t7 = document.getElementById("t7");
+        avgAge1 = avgAge(users);
+        t7.innerText = `The average age is ${avgAge1} years`;
+
+        /* Task 8 */
+        let t8btn = document.getElementById("t8btn");
+        let t8msg = document.getElementById("t8msg");
+        let t8count = 0
+        t8btn.addEventListener("click", function(){
+            t8count ++;
+            t8msg.innerText = `You've Pressed ${t8count} ${t8count == 1 ?"time":"times"}!`;
+        });
+
+        /* Task 9 */
+        let t9crct = "4"
+        let t9ans = document.getElementById("t9ans");
+        let t9btns = document.querySelectorAll(".t9btn");
+        t9btns.forEach(btn => {
+            btn.addEventListener("click", function(){
+                if (btn.textContent === t9crct){
+                    t9ans.textContent = "Correct Answer!!";
+                }else{
+                    t9ans.textContent = "Try Again!!";
+                }
+            });
+        });
+    </script>
+</body>
+</html>

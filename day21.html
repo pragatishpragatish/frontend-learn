@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <form id="form">
+            <input type="text" placeholder="Enter Name" id="name">
+            <input type="number" placeholder="Enter Age"id="age">
+            <button type="submit">Submit</button>
+            <button type="button" id="resetBtn">Reset</button>
+        </form>
+    </main>
+    <script>
+        localStorage.setItem("name", "Pragatish");
+        localStorage.setItem("city", "Hosur");
+        console.log("Name:", localStorage.getItem("name"));
+        console.log("City:", localStorage.getItem("city"));
+
+        let user = {
+            name: "Pragatish",
+            age: 21,
+            country: "India"
+        };
+
+        localStorage.setItem("user", JSON.stringify(user));
+        let savedUser = JSON.parse(localStorage.getItem("user"));
+        console.log(`Name: ${savedUser.name}\nAge: ${savedUser.age}\nCountry: ${savedUser.country}`);
+
+        window.addEventListener("DOMContentLoaded", function(){
+            let storedName = localStorage.getItem("formName");
+            let storedAge = localStorage.getItem("formAge");
+
+            if(storedName) document.getElementById("name").value = storedName;
+            if(storedAge) document.getElementById("age").value = storedAge;
+        })
+
+        document.getElementById("form").addEventListener("submit", function(e){
+            e.preventDefault()
+            let name = document.getElementById("name").value;
+            let age = document.getElementById("age").value;
+            localStorage.setItem("formName", name);
+            localStorage.setItem("formAge", age);
+            alert("data saved to localStorage");
+
+        })
+
+        document.getElementById("resetBtn").addEventListener("click", function(){
+            if(localStorage.getItem("formName")) localStorage.removeItem("formName");
+            if(localStorage.getItem("formAge")) localStorage.removeItem("formAge");
+            alert("Local storage cleared");
+        })
+    </script>
+</body>
+</html>

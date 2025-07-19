@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <ul id="myList">
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li id="thirdItem">Item 3</li>
+            <li>Item 4</li>
+            <li>Item 5</li>
+        </ul>
+
+        <div id="container">
+            <p>This is a paragraph</p>
+            <span>This is a span</span>
+            <button id="myButton">Click me</button>
+        </div>
+
+    </main>
+    <script>
+        const thirdLi = document.getElementById("thirdItem");
+        console.log(thirdLi.parentElement);
+        console.log(thirdLi.nextElementSibling);
+        console.log(thirdLi.previousElementSibling);
+
+        const Btn = document.getElementById("myButton");
+        console.log(Btn.parentElement)
+        console.log(Btn.previousElementSibling.previousElementSibling)
+
+        const body = document.body;
+        console.log(body.firstElementChild);
+        console.log(body.lastElementChild);
+        body.firstElementChild.style.backgroundColor = "blue";
+
+    </script>
+</body>
+</html>

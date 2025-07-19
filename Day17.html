@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <h2>Team Members</h2>
+        <button id="addMemberBtn" style="display: inline-block;">Add Member</button>
+        <button id="removeMemberBtn" style="display: inline-block;">Remove Last Member</button>
+        <div id="membersContainer"></div>
+    </main>
+    <script>
+        let container = document.getElementById("membersContainer");
+        let btn = document.getElementById("addMemberBtn");
+        let rmbtn = document.getElementById("removeMemberBtn");
+        function createCard(container){
+            let card = document.createElement("div");
+            let p = document.createElement("p");
+            card.classList.add("card");
+            p.textContent = "New Member";
+            card.style.backgroundColor = "lightgray"
+            card.style.padding = "1rem";
+            card.style.margin = "1rem";
+            card.style.borderRadius = "10px";
+            card.style.fontWeight = "bold";
+            card.style.textAlign = "center";
+            card.appendChild(p);
+            container.appendChild(card);
+        }
+        btn.addEventListener("click", function(){
+            createCard(container);
+        });
+        rmbtn.addEventListener("click", function(){
+            try{
+                if(container.children.length > 0){
+                    container.removeChild(container.lastChild);
+                }else{
+                    throw "No More Elements";
+                }
+            }catch(err){
+                alert(err);
+            }
+        })
+    </script>
+</body>
+</html>

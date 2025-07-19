@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My First Web Page</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        a {
+            color: black;
+            text-decoration: none;
+            border: 1px solid black;
+            background-color: plum;
+            border-radius: 25px;
+            padding: 10px;
+        }
+        h1 {
+            text-align: center;
+            color: navy;
+            font-size: 36px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        ol li {
+            background-color: violet;
+            color: navy;
+            padding: 10px;
+            border: 1px solid black;
+            border-radius: 50px;
+            text-align: center;
+        }
+        li:hover {
+            transform: scale(1.005);
+        }
+        .intro {
+            border: 1px solid black;
+            background-color: lightblue;
+            color: black;
+        }
+        form {
+            background-color: bisque;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: auto auto;
+            grid-template-rows: auto auto auto auto;
+            grid-column-gap: 10px;
+            border: 1px solid black;
+        }
+        .leftalign {
+            grid-column-start: 1;
+            text-align: center;
+        }
+        .submit {
+            grid-column-start: 1;
+            grid-column-end: 3;
+        }
+        table {
+            width: 90vw;
+        }
+        .evenrow {
+            background-color: lightblue;
+        }
+        .oddrow {
+            background-color: skyblue;
+        }
+        td {
+            text-align: center;
+        }
+        #footer {
+            font-weight: bold;
+        }
+        input[type="submit"]:hover {
+            background-color: darkorange;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>My Web Developer Journey</h1>
+    </header>
+    <br>
+    <nav>
+        <a href="#ipform">Input Form</a>
+        <a href="#dsaplan">DSA Plan</a>
+        <a href="#footer">Bottom</a>
+    </nav>
+    <section>
+        <p class="intro">This is my first webpage. I'm learning HTML!</p>
+        <img src="https://images.hitpaw.com/topics/photo-enhancer-tips/cute-baby-elephant-2.webp" alt="baby Elephant">
+        <ol>
+            <li>Learn DSA</li>
+            <li>Master HTML CSS</li>
+            <li>Learn React</li>
+        </ol>
+        <hr>
+        <a href="https://www.youtube.com/watch?v=brofphmC7GI">Here's my Favourite Youtube Video</a>
+
+        <hr>
+        <h3>Input Form</h3>
+        <form id="ipform">
+            <label for="username" class="leftalign">UserName</label>
+            <input type="text" id="username">
+            <br>
+            <label for="email" class="leftalign">Email</label>
+            <input type="email" id="email">
+            <br>
+            <label for="message" class="leftalign">Message</label>
+            <input type="text" id="message">
+            <br>
+            <input type="submit" value="Submit" class="submit">
+        </form>
+
+        <hr>
+
+        <h3 id="dsaplan">3-Day DSA Plan</h3>
+        <table>
+            <tr class="oddrow">
+                <th>Day</th>
+                <th>Topic</th>
+            </tr>
+            <tr class="evenrow">
+                <td>Day 1</td>
+                <td>Arrays</td>
+            </tr>
+            <tr class="oddrow">
+                <td>Day 2</td>
+                <td>Linked Lists</td>
+            </tr>
+            <tr class="evenrow">
+                <td>Day 3</td>
+                <td>Stacks</td>
+            </tr>
+        </table>
+    </section>
+    <footer id="footer">
+        <p>© 2025 Pragatish. All rights reserved.</p>
+    </footer>
+</body>
+</html>

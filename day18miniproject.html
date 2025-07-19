@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <h1>User Profile Dashboard</h1>
+        <button id="toggleAdminsBtn">toggle</button>
+        <div id="profileContainer"></div>
+    </main>
+    <script>
+        let profileContainer = document.getElementById("profileContainer");
+        let toggleAdminsBtn = document.getElementById("toggleAdminsBtn");
+        let users = [
+            {
+                username: "pragatish",
+                age: 21,
+                role: "admin",
+                country: "India",
+                getSummary: function(){
+                    return `${this.username} (${this.age}) from ${this.country} is an ${this.role}`;
+                }
+            }
+        ];
+
+        function renderUsers(userArray){
+            profileContainer.innerHTML = ""
+            users.forEach(user => {
+                let card = document.createElement("div");
+                let name = document.createElement("h3");
+                let para = document.createElement("p");
+                let summary = document.createElement("p");
+                let showDetailsBtn = document.createElement("button")
+                card.setAttribute("data-role", user.role);
+                card.classList.add("card");
+                summary.classList.add("details");
+                name.innerText = `${user.username}`;
+                para.innerText = `${user.role}`;
+                showDetailsBtn.innerText = "Show Details";
+                card.appendChild(name);
+                card.appendChild(para);
+                card.appendChild(showDetailsBtn);
+                card.appendChild(summary);
+                showDetailsBtn.addEventListener("click", function(){
+                    summary.innerText= user.getSummary();
+                });
+                profileContainer.appendChild(card)
+            });
+        }
+        renderUsers(users);
+
+        let showAdmins = true;
+        toggleAdminsBtn.addEventListener("click", function(){
+            let allCards = document.querySelectorAll(".card");
+            allCards.forEach(c => {
+                if (c.dataset.role === "admin"){
+                    c.style.display = showAdmins ? "none" : "block";
+                }
+            })
+            showAdmins = !showAdmins;
+        })
+    </script>
+</body>
+</html>

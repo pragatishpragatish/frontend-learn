@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nested Comment Viewer</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        .comment-card {
+            border: 5px solid grey;
+            border-radius: 15px;
+            margin: 2rem;
+            padding: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Nested Comment Viewer</h1>
+    </header>
+    <main>
+        <div id="commentSection"></div>
+    </main>
+    <script>
+        const commentSection = document.getElementById("commentSection");
+        const comments = [
+            {
+                username: "Alice",
+                message: "This is a great post!",
+                reply: "Thanks, Alice!"
+            },
+            {
+                username: "Bob",
+                message: "I have a question about this topic.",
+                reply: null
+            },
+            {
+                username: "Charlie",
+                message: "Well explained.",
+                reply: "Glad it helped!"
+            }
+        ];
+
+        comments.forEach(comment => {
+            const card = document.createElement("div");
+            const buttonGroup = document.createElement("div")
+            const usernameEl = document.createElement("strong");
+            const messageEl = document.createElement("p");
+            const showBtn = document.createElement("button");
+            const replyContainer = document.createElement("div")
+
+            card.classList.add("comment-card");
+            buttonGroup.classList.add("buttonGroup");
+            replyContainer.classList.add("reply");
+            usernameEl.textContent = comment.username;
+            messageEl.textContent = comment.message;
+            showBtn.textContent = "Show Reply";
+            replyContainer.style.display = "none";
+
+            let replyVisible = false;
+            showBtn.addEventListener("click", function(){
+                replyVisible = !replyVisible;
+                if(replyVisible){
+                    replyContainer.style.display = "block";
+                    showBtn.textContent = "Hide Reply";
+                    replyContainer.textContent = comment.reply || "No Replies Yet";
+                }else{
+                    replyContainer.style.display = "none";
+                    showBtn.textContent = "Show Reply"
+                }
+            })
+
+            buttonGroup.appendChild(showBtn);
+
+            card.appendChild(usernameEl)
+            card.appendChild(messageEl);
+            card.appendChild(buttonGroup);
+            card.appendChild(replyContainer);
+            commentSection.appendChild(card);
+
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let users = [
+            { username: "pragatish", role: "admin", country: "India" },
+            { username: "john", role: "viewer", country: "USA" },
+            { username: "mira", role: "editor", country: "India" },
+            { username: "li", role: "admin", country: "China" },
+            { username: "alexa", role: "viewer", country: "India" },
+            { username: "sven", role: "editor", country: "Sweden" },
+        ];
+        for(let user of users){
+            if(user.role === "admin"){
+                console.log(`${user.username} is an admin`);
+            }else{
+                console.log(`${user.username} is a ${user.role}`);
+            }
+        }
+        let admincount = 0;
+        let viewercount = 0
+        let editorcount = 0;
+        for (let user of users){
+            if(user.role === "admin"){
+                admincount++;
+            }else if(user.role === "viewer"){
+                viewercount++;
+            }else if(user.role === "editor"){
+                editorcount++;
+            }
+        }
+        console.log(`Admin: ${admincount}`);
+        console.log(`Viewer: ${viewercount}`);
+        console.log(`Editor: ${editorcount}`);
+        let usernames = users.map(function(user1) {
+            return user1.username;
+        });
+        usernames.sort()
+        console.log(usernames);
+        let indianUsers = users.filter(user => user.country === "India");
+        console.log(indianUsers);
+    </script>
+</body>
+</html>

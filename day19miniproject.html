@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Profile Card Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            transition: background-color 0.5s, color 0.5s;
+
+        }
+        #themeBtnBox {
+            display: flex;
+            justify-content: space-around;
+            padding: 1rem;
+        }
+        #inputForm {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            padding: 1rem;
+            gap: 1rem;
+        }
+        button {
+            cursor: pointer;
+        }
+        button:hover {
+            opacity: 0.85;
+        }
+        .preview-box {
+            border: 2px solid #ccc;
+            padding: 1rem;
+            margin: 1rem;
+            border-radius: 10px;
+            transition: border-color 0.7s;
+        }
+        .theme-light {
+            background-color: #f9f9f9;
+            color: #222;
+        }
+
+        .theme-dark {
+            background-color: #222;
+            color: #f9f9f9;
+        }
+
+        .theme-funky {
+            background: linear-gradient(45deg, #ff6ec4, #7873f5);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header style="text-align: center;"><h1>Mini Profile Card Generator</h1></header>
+    <nav>
+        <div id="themeBtnBox">
+            <button data-theme="theme-light">Light</button>
+            <button data-theme="theme-dark">Dark</button>
+            <button data-theme="theme-funky">Funky</button>
+        </div>
+    </nav>
+    <main>
+        <section>
+            <form id="inputForm">
+                <input type="text" id="nameIp" placeholder="Enter Your Name" style="grid-column: span 2;">
+                <input type="text" id="mailIp" placeholder="Enter Your Email" style="grid-column: span 2;">
+                <button type="submit">Submit</button>
+                <button type="button" id="resetBtn">Reset</button>
+            </form>
+        </section>
+        <section>
+            <div id="preview" class="preview-box">
+                <h2 id="previewName"></h2>
+                <p id="previewEmail"></p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const body = document.body;
+        const themeBtns = document.querySelectorAll('[data-theme]');
+        const nameIp = document.getElementById("nameIp");
+        const mailIp = document.getElementById("mailIp");
+        const previewName = document.getElementById("previewName");
+        const previewEmail = document.getElementById("previewEmail");
+        const inputForm = document.getElementById("inputForm")
+        const resetBtn = document.getElementById("resetBtn");
+        const previewBox = document.getElementById("preview");
+
+        themeBtns.forEach(button => {
+            button.addEventListener("click", function(){
+                body.className = "";
+                const theme = button.dataset.theme;
+                body.classList.add(theme);
+            })
+        })
+
+        nameIp.addEventListener("input", function(){
+            previewName.textContent = nameIp.value || "Your Name";
+        })
+
+        mailIp.addEventListener("input", function(){
+            previewEmail.textContent = mailIp.value || "Your Mail";
+        })
+
+        inputForm.addEventListener("submit", function(e){
+            e.preventDefault();
+            if(nameIp.value === "" || mailIp.value === ""){
+                alert("Please fill out all the fields");
+            }
+            else{
+                alert("Profile Succesfully created!!");
+            }
+        })
+
+        resetBtn.addEventListener("click", function(){
+            nameIp.value = "";
+            mailIp.value = "";
+            previewEmail.textContent = "";
+            previewName.textContent = "";
+        })
+
+        previewBox.addEventListener("mouseover", function(){
+            previewBox.style.borderColor = "blue";
+        })
+        previewBox.addEventListener("mouseout", function(){
+            previewBox.style.borderColor = "#ccc";
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <button id="clickMe">Click Me</button>
+        <button id="bye">GoodBye</button>
+        <p id="para">This is an simple Paragraph</p>
+
+        <input type="text" id="input" placeholder="Type Something....">
+        <p id="keyLog"></p>
+
+        <form id="testForm">
+            <input type="text" id="nameInput" placeholder="Enter Your Name">
+            <button type="submit">SUbmit</button>
+        </form>
+        <p id="formOutput"></p>
+
+        <ul id="fruitList">
+            <li>Apple</li>
+            <li>Banana</li>
+            <li>Orange</li>
+        </ul>
+    </main>
+    <script>
+        let btn = document.getElementById("clickMe");
+        let byeBtn = document.getElementById("bye");
+        btn.addEventListener("click", function(){
+            alert("Hello Pragatish!!");
+        })
+        byeBtn.addEventListener("click", function(){
+            alert("Goodbye");
+        })
+
+        let para = document.getElementById("para");
+        para.addEventListener("mouseover", function(){
+            para.style.color = "green";
+        })
+        para.addEventListener("mouseout", function(){
+            para.style.color = "black";
+        })
+        para.addEventListener("dblclick", function(){
+            para.style.fontSize = "5rem";
+        })
+        let input = document.getElementById("input");
+        let keyLog = document.getElementById("keyLog");
+
+        input.addEventListener("keydown", function(e){
+            if(e.key === "Enter"){
+                alert("You Pressed Enter");
+            }else{
+                keyLog.textContent = `You Pressed: ${e.key}`;
+            }
+        })
+
+        let form = document.getElementById("testForm");
+        let formOutput = document.getElementById("formOutput");
+        form.addEventListener("submit", function(e){
+            e.preventDefault();
+            let name = document.getElementById("nameInput").value;
+            formOutput.textContent = `Welcome ${name}`;
+        })
+
+        let fruitList = document.getElementById("fruitList");
+        fruitList.addEventListener("click", function(e){
+            if (e.target.tagName === "LI"){
+                alert(`You Clicked on ${e.target.textContent}`);
+            }
+        })
+
+        fruitList.addEventListener("mouseover", function(e){
+            if (e.target.tagName === "LI"){
+                e.target.style.cursor = "pointer";
+            }
+        })
+    </script>
+</body>
+</html>

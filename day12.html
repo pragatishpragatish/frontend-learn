@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let score = 67;
+        let Grade;
+        if (score >= 90){
+            Grade = "A";
+        }else if (75 <= score && score <= 89){
+            Grade = "B";
+        }else if (50 <= score && score <= 74){
+            Grade = "C";
+        }else{
+            Grade = "F";
+        }
+        console.log(`Grade: ${Grade}`);
+
+        let username = "pragatish";
+        let isPremium = true;
+        let premiumGreet = "Welcome Premium User";
+        let guestGreet = "Welcome Guest";
+        if (isPremium && username == "pragatish"){
+            console.log(`${premiumGreet} Pragatish`);
+        }else if(isPremium){
+            console.log(`${premiumGreet} ${username}`);
+        }else{
+            console.log(guestGreet);
+        }
+
+        let color = "green";
+        switch(color){
+            case "green":
+                console.log("Go!!");
+                break;
+            case "yellow":
+                console.log("Slow Down");
+                break;
+            case "red":
+                console.log("Stop");
+                break;
+            default:
+                console.log("Invalid Signal")
+        }
+    </script>
+</body>
+</html>

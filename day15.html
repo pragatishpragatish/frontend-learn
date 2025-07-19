@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let users = [
+            { username: "pragatish", role: "admin", country: "India", age: 21 },
+            { username: "john", role: "viewer", country: "USA", age: 25 },
+            { username: "mira", role: "editor", country: "India", age: 23 },
+            { username: "li", role: "admin", country: "China", age: 30 },
+            { username: "alexa", role: "viewer", country: "India", age: 20 },
+            { username: "sven", role: "editor", country: "Sweden", age: 27 }
+        ];
+        function printUserSummary(userArray){
+            for(let user of userArray){
+                console.log(`${user.username} is a ${user.role} from ${user.country} and is ${user.age} years old.`);
+            }
+        }
+        function countUsersByRole(userArray){
+            let adminCount = 0, viewerCount = 0, editorCount = 0;
+            for(let user of userArray){
+                if (user.role === "admin"){
+                    adminCount++;
+                }else if(user.role === "viewer"){
+                    viewerCount++;
+                }else if(user.role === "editor"){
+                    editorCount++;
+                }
+            }
+            console.log(`Admin: ${adminCount}`);
+            console.log(`Viewer: ${viewerCount}`);
+            console.log(`Editor: ${editorCount}`);
+        }
+        function getUsersFromCountry(userArray, country){
+            let countryUsers = userArray.filter(user => user.country === country);
+            return countryUsers;
+        }
+        function getAverageAge(userArray){
+            let total = 0;
+            for(let user of userArray){
+                total += user.age
+            }
+            let average = total / userArray.length
+            return average
+        }
+        function groupUsersByCountry(userArray){
+            let grouped = {};
+            userArray.forEach(user => {
+                let country = user.country
+                if(!grouped[country]){
+                    grouped[country] = [];
+                }
+                grouped[country].push(user);
+            });
+            return grouped;
+        }
+        printUserSummary(users);
+        countUsersByRole(users);
+        console.log(getUsersFromCountry(users, "India"));
+        console.log(getAverageAge(users))
+        console.log(groupUsersByCountry(users));
+    </script>
+</body>
+</html>
