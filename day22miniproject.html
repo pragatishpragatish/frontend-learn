@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>FAQ Section</title>
+  <style>
+    * {
+        box-sizing: border-box;
+    }
+    .question{
+        cursor: pointer;
+        background-color: #f0f0f0;
+        border: none;
+        padding: 1rem 1.5rem;
+        width: 100%;
+        text-align: left;
+        font-size: 1.1rem;
+        font-weight: bold;
+        outline: none;
+        transition: background-color 0.3s;
+    }
+      .question:hover,.question:focus {
+            background-color: #ddd;
+    }
+
+    .answer{
+        display: none;
+        padding: 0 15px;
+        margin: 0;
+        background-color: #fafafa;
+        border-left: 3px solid #007bff;
+
+    }
+    .answer.open{
+        padding: 1rem 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="faq-item">
+      <button class="question">What is JavaScript?</button>
+      <p class="answer">JavaScript is a programming language used for web development.</p>
+    </div>
+    
+    <div class="faq-item">
+      <button class="question">What is DOM?</button>
+      <p class="answer">DOM stands for Document Object Model, it represents the page structure.</p>
+    </div>
+    
+    <div class="faq-item">
+      <button class="question">What is an event listener?</button>
+      <p class="answer">An event listener waits for user interaction like clicks and responds accordingly.</p>
+    </div>
+  </main>
+  <script>
+    const questions = document.querySelectorAll(".question");
+    questions.forEach((question) => {
+        question.addEventListener("click", function(){
+            const answer = question.nextElementSibling;
+
+            document.querySelectorAll(".answer").forEach((ans) => {
+                ans.style.display = "none";
+                ans.classList.remove("open")
+            })
+            if (answer.style.display !== "block"){
+                answer.style.display = "block";
+                answer.classList.add("open");
+            }
+        })
+    })
+  </script>
+</body>
+</html>
