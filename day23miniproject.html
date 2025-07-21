@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            padding: 40px;
+        }
+        button{
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        #notificationContainer{
+            position: fixed;
+            bottom: 20px;
+            right: 10px;
+        }
+        .notification {
+            background-color: #2b2bff;
+            color: white;
+            padding: 12px 18px;
+            margin-top: 10px;
+            border-radius: 6px;
+            min-width: 200px;
+            position: relative;
+            opacity: 1;
+            right: -300px;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="showNotification()">Show Notification</button>
+    <div id="notificationContainer"></div>
+
+    <script>
+        const messages = [
+            "New message received!",
+            "Download complete!",
+            "Your settings were saved.",
+            "You have a new follower!",
+            "Action was successful!"
+        ];
+        function showNotification(){
+            const container = document.getElementById("notificationContainer");
+            const notif = document.createElement("div");
+            notif.classList.add("notification");
+            notif.innerText = messages[Math.floor(Math.random() * messages.length)]
+
+            container.appendChild(notif);
+
+            let rightPos = -300;
+            let slideIn = setInterval(() => {
+                if(rightPos >= 0){
+                    clearInterval(slideIn);
+                }else{
+                    rightPos += 10;
+                    notif.style.right = rightPos + "px";
+                }
+            }, 10);
+            setTimeout(() => {
+                let opacity = 1;
+                const fadeInterval = setInterval(() => {
+                if (opacity <= 0) {
+                    clearInterval(fadeInterval);
+                    notif.remove(); // remove from DOM
+                } else {
+                    opacity -= 0.05;
+                    notif.style.opacity = opacity;
+                }
+                }, 50);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

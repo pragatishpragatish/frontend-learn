@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="circle" style="width: 20px; height: 20px; background: blue; border-radius: 50%; position: absolute;"></div>
+    <button onclick="expandCircle()">Expand Circle</button>
+
+    <script>
+        function expandCircle() {
+        const circle = document.getElementById("circle");
+        let size = 20;
+        const interval = setInterval(() => {
+            if (size >= 100) {
+            clearInterval(interval);
+            } else {
+            size += 2;
+            circle.style.width = size + "px";
+            circle.style.height = size + "px";
+            }
+        }, 20);
+        }
+    </script>
+
+</body>
+</html>
