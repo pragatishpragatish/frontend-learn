@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic FAQ Accordion</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            background: #f7f7f7;
+        }
+        h1{
+            text-align: center;
+        }
+        #faq-list{
+            max-width: 60%;
+            margin: 0 auto;
+        }
+        .faq-item {
+            background: white;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 15px;
+            cursor: pointer;
+            font-weight: bold;
+            background-color: #e0e0ff;
+        }
+
+        .faq-answer {
+            padding: 15px;
+            display: none;
+            background-color: #f0f0ff;
+        }
+
+        .faq-answer.active {
+            display: block;
+        }
+        .buttonHolder{
+            margin-top: 3rem;
+            display: flex;
+            justify-content: center;
+        }
+        button{
+            padding: 1rem 1.5rem;
+            border: none;
+            background-color: lightblue;
+            border-radius: 3rem;
+            cursor: pointer;
+            transition: scale, background-color 0.5s, 0.5s;
+        }
+        button:hover{
+            scale: 1.1;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>FAQ</h1>
+    </header>
+    <main>
+        <div id="faq-list">
+            <div class="faq-item">
+                <div class="faq-question">What is JavaScript?</div>
+                <div class="faq-answer">JavaScript is a programming language used for web development.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">What is Event Delegation?</div>
+                <div class="faq-answer">It allows you to add a single event listener to a parent element instead of multiple listeners to child elements.</div>
+            </div>
+        </div>
+        <div class="buttonHolder">
+            <button id="add-faq">Add New FAQ</button>
+        </div>
+    </main>
+    <script>
+        document.getElementById("faq-list").addEventListener("click", function(e){
+            if (e.target.classList.contains("faq-question")){
+                const question = e.target;
+                const answer = question.nextElementSibling;
+                answer.classList.toggle("active")
+            }
+        });
+        function addQuery(){
+            const parent = document.getElementById("faq-list")
+            const question = prompt("Enter Question: ");
+            const answer = prompt("Enter Answer: ");
+            if (question !== "" & answer !== ""){
+                const item = document.createElement("div");
+                const qitem = document.createElement("div");
+                const ansitem = document.createElement("div");
+                item.classList.add("faq-item")
+                qitem.classList.add("faq-question");
+                ansitem.classList.add("faq-answer");
+                qitem.textContent = question;
+                ansitem.textContent = answer;
+                item.appendChild(qitem);
+                item.appendChild(ansitem);
+                parent.appendChild(item)
+            }
+        }
+
+        const btn = document.getElementById("add-faq");
+        btn.addEventListener("click", addQuery);
+    </script>
+</body>
+</html>
